@@ -19,7 +19,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/")
+    @GetMapping("/users")
     public String showUserList(ModelMap modelMap) {
         List<User> users = userService.listUsers();
         modelMap.addAttribute("users", users);
@@ -43,7 +43,7 @@ public class UserController {
             User user1 = new User(firstName, lastName);
             userService.create(user);
         }
-        return "redirect:/";
+        return "redirect:/users";
     }
 
     @RequestMapping("/{id}/edit")
@@ -57,7 +57,7 @@ public class UserController {
     public String update(@ModelAttribute("user") User user) {
         userService.create(user);
 
-        return "redirect:/";
+        return "redirect:/users";
     }
 
     @RequestMapping(value = {"/{id}"}, method = RequestMethod.DELETE)
@@ -65,6 +65,6 @@ public class UserController {
 
         userService.delete(id);
 
-        return "redirect:/";
+        return "redirect:/users";
     }
 }
